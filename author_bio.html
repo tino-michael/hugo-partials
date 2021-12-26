@@ -1,21 +1,12 @@
 <div class="author-bio">
-    {{ $name := .Params.name }}
-
-    <h1>{{ $name }}</h1>
     <div class="author-bio-box">
         <div class="author-bio-img-box">
             <img src="/img/authors/{{ .Data.Term }}.jpg">
         </div>
         <div class="author-bio-text-box">
-            {{ $bio := .Params.bio }}
-            {{ if .LanguagePrefix }}
-                {{ if eq .LanguagePrefix "/de" }}
-                    {{ with .Params.bio_de }}
-                        {{ $bio = . }}
-                    {{ end }}
-                {{ end }}
+            {{ with .Params.bio }}
+            <p>{{ . }}</p>
             {{ end }}
-            <p>{{ $bio }}</p>
         </div>
     </div>
 </div>
