@@ -1,7 +1,10 @@
 <div class="author-bio">
     <div class="author-bio-box">
         <div class="author-bio-img-box">
-            <img src="/img/authors/{{ .Data.Term }}.jpg">
+            <img
+                src="/img/authors/{{ .Data.Term }}.webp"
+                alt="{{ if .Params.alt }}{{ .Params.alt }}{{ else }}{{ i18n "profileAltText" }} {{ .Params.name }}{{ end }}"
+                >
         </div>
         <div class="author-bio-text-box">
             {{ with .Params.bio }}
