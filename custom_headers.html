@@ -1,6 +1,12 @@
-{{ $options := (dict "targetPath" "custom.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "scss/partials") ) }}
+{{
+    $options := (dict
+        "targetPath" "css/custom.css"
+        "outputStyle" "compressed"
+        "enableSourceMap" true
+    )
+}}
 {{ with resources.Get "scss/main.scss" }}
-    {{ $styles := . | resources.ToCSS $options | resources.Fingerprint }}
+    {{ $styles := . | resources.ToCSS $options | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{ end }}
 
